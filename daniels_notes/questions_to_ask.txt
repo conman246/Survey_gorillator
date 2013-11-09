@@ -4,3 +4,4 @@ Trying to checkout remote working branch, but instead, "git checkout -b working"
 
 How to we have sublime refresh, perhaps automatically, to show us the newly added folder and files?
 
+How to setup my friggin windows machine / hackintosh to run stuff we need? (rake console, bundle)

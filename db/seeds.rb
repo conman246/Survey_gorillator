@@ -13,3 +13,5 @@ second_possible_answer = PossibleAnswer.create text: "No", question: question
 chosen_answer = ChosenAnswer.create question: question, user: user, possible_answer: first_possible_answer
 
 taken_survey = TakenSurvey.create survey: survey, user: user 
+
+User.create email: "dandydanny@gmail.com"
