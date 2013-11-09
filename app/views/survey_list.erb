@@ -1,7 +1,9 @@
  
-<% surveys = Survey.all %> 
 
+<% surveys = Survey.all %> 
+<ul>
 <% surveys.each do |survey| %>
-	<%= survey.title %>
+	<li><a href="/"><%= survey.title %></a></li><br>
 <% end %>
-	
+</ul>
+
