@@ -23,7 +23,7 @@ Food quality.
 Speed.
 Low price.
 
-Pick a preferred ingredient:
+Do you like a preferred ingredient?
 Protein.
 Carbs.
 Greens.
@@ -33,4 +33,3 @@ Absolutely.
 Only if you buy my lunch.
 I'm not your slave. No.
 
-www.codesc
