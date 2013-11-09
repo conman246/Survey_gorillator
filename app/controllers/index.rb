@@ -1,3 +1,5 @@
+enable :sessions
+
 get '/' do
   erb :index
 end
@@ -9,8 +11,12 @@ end
 
 post '/log_in' do 
 	@user = User.find_by_email(params[:email])
-
-	redirect to('/user_portal')
+	if @user.authenticate(params[:password])
+		session[:user_id] = @user.id
+		redirect to('/user_portal')
+	else
+		redirect to('/')
+	end
 end
 
 get '/signup' do
