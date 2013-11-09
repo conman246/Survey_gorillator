@@ -18,6 +18,11 @@ require 'logger'
 require 'sinatra'
 require "sinatra/reloader" if development?
 
+require 'bcrypt'
+
+require 'faker'
+
+
 require 'erb'
 
 # Some helper constants for path-centric logic

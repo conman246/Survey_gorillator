@@ -13,6 +13,8 @@ gem 'thin'
 gem 'activesupport'
 gem 'activerecord'
 
+# gem 'bcrypt-ruby', '~> 3.0.1'
+gem 'bcrypt-ruby'
 gem 'rake'
 
 gem 'shotgun'
