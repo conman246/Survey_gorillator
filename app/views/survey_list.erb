@@ -3,6 +3,6 @@
 <% surveys = Survey.all %> 
 <ul>
 <% surveys.each do |survey| %>
-	<li><a href="/submit_survey"><%= survey.title %></a></li><br>
+	<li><a href="/submit_survey/<%= survey.id %>"><%= survey.title %></a></li><br>
 <% end %>
 </ul>
