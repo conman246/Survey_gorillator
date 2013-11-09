@@ -1,9 +1,8 @@
- 
+<h1>Survey List</h1>
 
 <% surveys = Survey.all %> 
 <ul>
 <% surveys.each do |survey| %>
-	<li><a href="/"><%= survey.title %></a></li><br>
+	<li><a href="/submit_survey"><%= survey.title %></a></li><br>
 <% end %>
 </ul>
-
