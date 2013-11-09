@@ -11,12 +11,17 @@ end
 
 post '/log_in' do 
 	@user = User.find_by_email(params[:email])
-	# if @user.authenticate(params[:password])
+	if @user && @user.authenticate(params[:password]) 
 	session[:user_id] = @user.id
-		redirect to('/user_portal')
-	# else
-	# 	redirect to('/')
-	# end
+	redirect to('/user_portal')
+	else
+		redirect to('/')
+	end
+end
+
+get "/logout" do 
+	session.clear
+	redirect to('/')
 end
 
 get '/signup' do
@@ -25,7 +30,10 @@ end
 
 post '/signup' do
 	# create user with data given
-	@user = User.create(email: params[:email], password: params[:password])
+		@user = User.create(email: params[:email], 
+											password: params[:password],
+											password_confirmation: params[:password])
+	redirect to('/user_portal')
 end
 
 get '/user_portal' do
@@ -52,7 +60,7 @@ get '/create_survey' do
 end
 
 post '/create_survey' do
-	#add newly created survey into database
+	@survey = Survey.create(title: params[:title], user_id: session[:user_id])
 	redirect to('/user_portal')
 end
 

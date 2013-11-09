@@ -6,7 +6,7 @@ require 'faker'
 
 25.times do 
 	email = Faker::Internet.email 
-	@all_users << User.create(email: email, password: "password")
+	@all_users << User.create(email: email, password: "password", password_confirmation: "password")
 end
 
 25.times do 
