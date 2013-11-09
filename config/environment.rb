@@ -21,6 +21,7 @@ require "sinatra/reloader" if development?
 # require 'bcrypt'
 
 require 'faker'
+require 'pry'
 
 
 require 'erb'

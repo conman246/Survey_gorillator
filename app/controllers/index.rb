@@ -5,18 +5,18 @@ get '/' do
 end
 
 get '/survey_list' do 
-	# ask instructor about conventional way to name routes. 
+	
 	erb :survey_list 
 end 
 
 post '/log_in' do 
 	@user = User.find_by_email(params[:email])
-	if @user.authenticate(params[:password])
-		session[:user_id] = @user.id
+	# if @user.authenticate(params[:password])
+	session[:user_id] = @user.id
 		redirect to('/user_portal')
-	else
-		redirect to('/')
-	end
+	# else
+	# 	redirect to('/')
+	# end
 end
 
 get '/signup' do
@@ -32,12 +32,18 @@ get '/user_portal' do
 	erb :user_portal
 end
 
-get '/submit_survey' do
+get '/submit_survey/:id' do
+	@survey = Survey.find(params[:id])
 	erb :submit_survey
 end
 
 post '/submit_survey' do
-	# tabulate received data
+	# binding.pry
+	# p params
+	params[:answers].each do |answer_id, question_id|
+		ChosenAnswer.create(question_id: question_id.to_i, user: User.find(session[:user_id]), possible_answer: PossibleAnswer.find(answer_id.to_i))
+	end
+	
 	redirect to('/user_portal')
 end
 
