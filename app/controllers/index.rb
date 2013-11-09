@@ -49,3 +49,4 @@ post '/create_survey' do
 	#add newly created survey into database
 	redirect to('/user_portal')
 end
+
