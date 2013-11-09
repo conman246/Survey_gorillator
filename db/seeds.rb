@@ -4,8 +4,7 @@ user = User.create email: "awesomedude@gmail.com", password: "1234"
 
 survey = Survey.create title: "first_survey", user: user, draft_status: nil
 
-question = Question.create survey: survey, text: "first_question"
-
+question = Question.create survey: survey, text: "What do you want for lunch today?"
 
 first_possible_answer = PossibleAnswer.create text: "yes", question: question 
 second_possible_answer = PossibleAnswer.create text: "No", question: question 
