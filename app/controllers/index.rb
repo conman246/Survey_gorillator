@@ -55,7 +55,7 @@ get '/create_survey' do
 end
 
 post '/create_survey' do
-	@survey = Survey.create(title: params[:title])
+	@survey = Survey.create(title: params[:title], user_id: session[:user_id])
 	redirect to('/user_portal')
 end
 
