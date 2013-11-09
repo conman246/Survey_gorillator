@@ -1,0 +1,6 @@
+Questions:
+
+Trying to checkout remote working branch, but instead, "git checkout -b working" created a working branch locally instead. why?
+
+How to we have sublime refresh, perhaps automatically, to show us the newly added folder and files?
+
