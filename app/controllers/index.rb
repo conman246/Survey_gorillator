@@ -33,6 +33,7 @@ post '/signup' do
 		@user = User.create(email: params[:email], 
 											password: params[:password],
 											password_confirmation: params[:password])
+		session[:user_id] = @user.id
 	redirect to('/user_portal')
 end
 
@@ -60,7 +61,18 @@ get '/create_survey' do
 end
 
 post '/create_survey' do
-	@survey = Survey.create(title: params[:title], user_id: session[:user_id])
-	redirect to('/user_portal')
+	survey = Survey.create(title: params[:title], user_id: session[:user_id])
+	redirect to("/create_question/#{survey.id}")
+end
+
+get '/create_question/:id' do 
+	p params[:id]
+	@possible_answer = PossibleAnswer.all
+	erb :create_question
+end
+
+post "/create_question" do
+	# Question.create(survey_id:    , text:  )
+	redirect to('/create_survey')
 end
 

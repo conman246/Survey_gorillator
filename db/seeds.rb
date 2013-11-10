@@ -4,14 +4,14 @@ require 'faker'
 @all_users = []
 @all_surveys = []
 
-25.times do 
+10.times do 
 	email = Faker::Internet.email 
 	@all_users << User.create(email: email, password: "password", password_confirmation: "password")
 end
 
-25.times do 
+5.times do 
 	title = Faker::Name.title 
-	user_id = rand(1..11)
+	user_id = rand(1..10)
 	draft_status = true 
 	@all_surveys << Survey.create(title: title, user_id: user_id, draft_status: draft_status)
 end
