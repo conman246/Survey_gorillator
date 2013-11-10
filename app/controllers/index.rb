@@ -51,7 +51,7 @@ post '/take_survey' do
 	params[:answers].each do |answer_id, question_id|
 		ChosenAnswer.create(question_id: question_id.to_i, user: User.find(session[:user_id]), possible_answer: PossibleAnswer.find(answer_id.to_i))
 	end
-	
+  
 	redirect to('/user_portal')
 end
 
