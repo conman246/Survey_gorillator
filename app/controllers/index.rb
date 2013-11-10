@@ -40,12 +40,12 @@ get '/user_portal' do
 	erb :user_portal
 end
 
-get '/submit_survey/:id' do
+get '/take_survey/:id' do
 	@survey = Survey.find(params[:id])
-	erb :submit_survey
+	erb :take_survey
 end
 
-post '/submit_survey' do
+post '/take_survey' do
 	# binding.pry
 	# p params
 	params[:answers].each do |answer_id, question_id|
