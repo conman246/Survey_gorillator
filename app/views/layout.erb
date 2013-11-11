@@ -18,13 +18,11 @@
   <title></title>
 </head>
 <body>
-  <header>
-    <% if session[:user_id] %>
-    <a href="/logout">Log Out</a>
+    <% if session[:user_id] %>  
+    <%= erb :_logout %>  
     <% else %>
-    <a href="/" id="login_form">Log in</a>
+    <%= erb :_navbar %>
     <% end %>
-  </header>  
   <%= yield %>
 </body>
 </html>
