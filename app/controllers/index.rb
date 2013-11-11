@@ -41,24 +41,29 @@ get '/user_portal' do
 	erb :user_portal
 end
 
-get '/submit_survey/:id' do
+get '/take_survey/:id' do
 	@survey = Survey.find(params[:id])
-	erb :submit_survey
+	erb :take_survey
 end
 
-post '/submit_survey' do
+post '/take_survey' do
 	# binding.pry
 	# p params
 	params[:answers].each do |answer_id, question_id|
 		ChosenAnswer.create(question_id: question_id.to_i, user: User.find(session[:user_id]), possible_answer: PossibleAnswer.find(answer_id.to_i))
-	end
-	
+
+	end    
+      
 	redirect to('/user_portal')
 end
 
-get '/create_survey' do
-	erb :create_survey
-end
+get '/create_survey' do 
+	if request.xhr?
+		erb :create_survey, :layout => false 
+	else 
+		erb :create_survey
+	end
+end # xhr? returns true if the request is made via ajax. I want it to return false if it was an ajax request so I use the bang.
 
 post '/create_survey' do
 	survey = Survey.create(title: params[:title], user_id: session[:user_id])
