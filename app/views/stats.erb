@@ -1,0 +1,32 @@
+<div class="container">
+<h1>Statistics</h1>
+
+<!-- Find survey -->
+
+<div class="surveytitle"></div>
+<!-- list questions from survey -->
+<div class="eachquestion"></div>
+<div></div>
+
+
+<div class="demo-container">
+  <div class="demo-box">Demonstration Box</div>
+</div>
+
+<h2>Stats for: <%= @survey.title %></h2>
+<!-- list possible answers for all questions in that survey -->
+
+<% @question.each do |ques| %>
+
+  <p class="que"><strong><%= ques.text %></strong></p>
+
+  <% @survey.questions.find(ques).possible_answers.each do |posans|%>
+    <p class="ans"><%= posans.text %></p>
+  <% end %>
+
+<% end %>
+<!-- tabulate "votes" for each possible answer -->
+<br>
+<!-- display percentage next to possible answer -->
+
+</div>
