@@ -1,0 +1,36 @@
+<div class="container">
+<h1>Statistics</h1>
+
+<!-- Find survey -->
+
+<h2>Stats for survey named: <%= @survey.title %></h2>
+
+
+ <table>
+    <!-- list questions from survey -->
+    <% @survey.questions.each do |question| %>
+      <tr>
+        <td><p class="que"><strong><%= question.text %></strong></p></td>
+        <td></td>
+      </tr>
+      <!-- list possible answers for all questions in that survey -->
+      <% @survey.questions.find(question.id).possible_answers.each do |possible_answer| %>
+      <tr>
+        <td><p class="ans"></p><%= possible_answer.text %></td>
+        <td>
+        <!-- tabulate all "votes" for this particular poss. answer -->
+         <%= possible_answer.chosen_answers.count %>
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+</table>
+
+
+
+
+<!-- tabulate "votes" for each possible answer -->
+<br>
+<!-- display percentage next to possible answer -->
+
+</div>

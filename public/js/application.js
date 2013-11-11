@@ -1,7 +1,24 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $("#create_survey_link").click(function(event){
+  	event.preventDefault();
+  	$(this).hide();
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  	$.get('/create_survey', function(form){
+  		$(".container").append(form);
+  	});
+  });
+
+  $(".container").on("submit", '#new_survey', function(event){
+  	event.preventDefault();
+
+  	var url = $(this).attr('action');
+  	var data = $(this).serialize();
+
+  	$.post(url, data, function(response){
+  		$("#new_stuff").append(response);
+
+  	})
+  });
 });
+
+

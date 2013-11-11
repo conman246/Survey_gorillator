@@ -18,6 +18,11 @@
   <title></title>
 </head>
 <body>
+    <% if session[:user_id] %>  
+    <%= erb :_logout %>  
+    <% else %>
+    <%= erb :_navbar %>
+    <% end %>
   <%= yield %>
 </body>
 </html>
