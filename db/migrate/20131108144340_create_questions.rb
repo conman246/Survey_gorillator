@@ -7,3 +7,4 @@ class CreateQuestions < ActiveRecord::Migration
   	end
   end
 end
+

@@ -81,3 +81,25 @@ post "/create_question" do
 	redirect to('/create_survey')
 end
 
+# ================== Daniel's additions ===============
+
+get '/stats/:id' do
+
+	if session[:user_id] == nil
+		redirect to("/")
+	else
+		p params[:id]
+		@survey = Survey.find(params[:id])
+		# @survey.questions
+		#@question = Survey.find(params[:id]).questions
+		# @answer = Survey.find(params[:id]).questions.find(1).possible_answers
+		@chosenanswer = ChosenAnswer.all
+		puts "-------------------------"
+		p @chosenanswer
+	# 	p @survey
+	# 	p @question
+	# 	# P @answer
+		erb :stats
+	end
+  
+end

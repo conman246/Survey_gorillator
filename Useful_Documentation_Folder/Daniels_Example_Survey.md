@@ -1,5 +1,3 @@
-Office Lunchtime Foodstuffs Survey
-
 It is lunch time. Are you hungry?
 Yes. Stuff my face with food.
 No, not at all.
