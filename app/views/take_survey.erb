@@ -7,7 +7,6 @@
 		<p><%=question.text%></p>
 		<% question.possible_answers.each do |answer| %>
 		<input type="radio" name="<%=question.id%>" value="<%=answer.id%>"><%=answer.text%><br>
-		<%=question.id%>|<%=answer.id%><br>
 		<%end%>
 		<%end%>
 	
