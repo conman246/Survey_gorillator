@@ -56,9 +56,13 @@ post '/take_survey' do
 	redirect to('/user_portal')
 end
 
-get '/create_survey' do
-	erb :create_survey
-end
+get '/create_survey' do 
+	if request.xhr?
+		erb :create_survey, :layout => false 
+	else 
+		erb :create_survey
+	end
+end # xhr? returns true if the request is made via ajax. I want it to return false if it was an ajax request so I use the bang.
 
 post '/create_survey' do
 	@survey = Survey.create(title: params[:title], user_id: session[:user_id])
