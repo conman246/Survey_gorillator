@@ -63,6 +63,7 @@ th {
   text-align: left;
 }
 
+<<<<<<< HEAD
 .header {
   height: 250px;
   display: block;
@@ -243,3 +244,18 @@ th {
   font-size: 30px;
 
 }
+=======
+#success {
+	text-align: center;
+}
+
+#title {
+	text-align: center;
+	color: red
+}
+
+#success_explanation {
+	text-align: center;
+}
+
+>>>>>>> e9756ff96628ea04cf17cfac702ba0bae51dbd0b
