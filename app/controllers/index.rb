@@ -38,7 +38,11 @@ post '/signup' do
 end
 
 get '/user_portal' do
-	erb :user_portal
+	if session[:user_id] == nil
+		redirect to("/")
+	else
+		erb :user_portal
+	end
 end
 
 get '/take_survey/:id' do

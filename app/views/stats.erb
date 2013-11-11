@@ -2,35 +2,39 @@
 <h1>Statistics</h1>
 
 <!-- Find survey -->
+<h2>Survey Title: <%= @survey.title %></h2>
 
-<h2>Stats for survey named: <%= @survey.title %></h2>
-
-
- <table>
+ <table id="statstable">
     <!-- list questions from survey -->
     <% @survey.questions.each do |question| %>
       <tr>
-        <td><p class="que"><strong><%= question.text %></strong></p></td>
-        <td></td>
+        <td id="left_column"><%= question.text %></td>
+        <td id="right_column">&nbsp;</td>
       </tr>
       <!-- list possible answers for all questions in that survey -->
       <% @survey.questions.find(question.id).possible_answers.each do |possible_answer| %>
       <tr>
-        <td><p class="ans"></p><%= possible_answer.text %></td>
+        <ol>
+        <td id="possibleanswer"><li><%= possible_answer.text %></li></td>
+        </ol>
         <td>
-        <!-- tabulate all "votes" for this particular poss. answer -->
-         <%= possible_answer.chosen_answers.count %>
+          <!-- tabulate all "votes" for this particular poss. answer -->
+          <% actualvotes = possible_answer.chosen_answers.count %>
+          <!-- calculate how many people voted for this question -->
+          <% totalvotes = question.chosen_answers.count %>
+          <!-- calculate percentage -->
+          <% percentage = (actualvotes.to_f / totalvotes.to_f)*100 %>
+          <!-- adjust bargraph length and color based on percentage -->
+          <script type="text/javascript">
+            bargraph.style.color="";
+          </script>
+          <div id="bargraph" style="width: <%= percentage*3 %>px;
+            background-color: rgb(<%= percentage.to_s %>%,50%,60%);">
+            <%= percentage %>%</div> 
         </td>
       </tr>
       <% end %>
     <% end %>
 </table>
-
-
-
-
-<!-- tabulate "votes" for each possible answer -->
-<br>
-<!-- display percentage next to possible answer -->
 
 </div>

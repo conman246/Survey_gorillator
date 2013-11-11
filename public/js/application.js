@@ -2,7 +2,10 @@ $(document).ready(function() {
   $("#create_survey_link").click(function(event){
   	event.preventDefault();
   	$(this).hide();
-
+    $("#userportal").hide();
+    $("#user_portal_h1").hide();
+    $("#survey_list_link").hide();
+    $("#stats_link").hide();
   	$.get('/create_survey', function(form){
   		$(".container").append(form);
   	});
