@@ -52,9 +52,17 @@ end
 
 post '/take_survey' do
 	# binding.pry
-	# p params
-	params[:answers].each do |answer_id, question_id|
-		ChosenAnswer.create(question_id: question_id.to_i, user: User.find(session[:user_id]), possible_answer: PossibleAnswer.find(answer_id.to_i))
+	p params
+	TakenSurvey.create(:survey_id => params[:survey_id], :user_id => session[:user_id])
+	# store question id
+	# strip the button value
+	# iterate through the rest
+	params.each do |question_id, answer_id|
+		if question_id.length < 3
+		ChosenAnswer.create(question_id: question_id.to_i,
+			user_id: session[:user_id],
+			possible_answer_id: answer_id.to_i)
+		end
 
 	end    
       
