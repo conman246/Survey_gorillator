@@ -7,3 +7,17 @@
 th {
   text-align: left;
 }
+
+#success {
+	text-align: center;
+}
+
+#title {
+	text-align: center;
+	color: red
+}
+
+#success_explanation {
+	text-align: center;
+}
+
