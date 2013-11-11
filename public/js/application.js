@@ -10,6 +10,19 @@ $(document).ready(function() {
   		$(".container").append(form);
   	});
   });
+  
+  $(".container").on("submit", '#new_survey', function(event){
+    event.preventDefault();
+
+    var url = $(this).attr('action');
+    var data = $(this).serialize();
+
+    $.post(url, data, function(response){
+      $("#new_stuff").append(response);
+
+    })
+  });
+});
 
 
 
@@ -18,12 +31,6 @@ $(document).ready(function() {
 
 
 
-
-
-  // Front end eye-candy stuff
-
-
-  // Show login form on click
   $("#login_logout").click(function() {
     console.log("clicked");
     $(".homecontent").animate({height:"100%"});
@@ -39,5 +46,17 @@ $(document).ready(function() {
 });
 
 
+  $(".container").on("submit", '#new_survey', function(event){
+  	event.preventDefault();
+
+  	var url = $(this).attr('action');
+  	var data = $(this).serialize();
+
+  	$.post(url, data, function(response){
+  		$("#new_stuff").append(response);
+
+  	})
+  });
+});
 
 
