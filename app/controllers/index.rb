@@ -66,8 +66,14 @@ get '/create_survey' do
 end # xhr? returns true if the request is made via ajax. I want it to return false if it was an ajax request so I use the bang.
 
 post '/create_survey' do
-	survey = Survey.create(title: params[:title], user_id: session[:user_id])
-	redirect to("/create_question/#{survey.id}")
+	@survey = Survey.create(title: params[:title], user_id: session[:user_id])
+	# if request.xhr?
+			# erb :create_survey, layout: false, locals: { contact: @survey }
+	# else
+		# erb :"/create_question/#{survey.id}"
+		erb :response, :layout => false 
+		# redirect to("/create_question/#{survey.id}")
+	# end
 end
 
 get '/create_question/:id' do 

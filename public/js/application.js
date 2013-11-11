@@ -7,8 +7,18 @@ $(document).ready(function() {
   		$(".container").append(form);
   	});
   });
+
+  $(".container").on("submit", '#new_survey', function(event){
+  	event.preventDefault();
+
+  	var url = $(this).attr('action');
+  	var data = $(this).serialize();
+
+  	$.post(url, data, function(response){
+  		$("#new_stuff").append(response);
+
+  	})
+  });
 });
-
-
 
 
