@@ -3,28 +3,32 @@
 
 <!-- Find survey -->
 
-<div class="surveytitle"></div>
-<!-- list questions from survey -->
-<div class="eachquestion"></div>
-<div></div>
+<h2>Stats for survey named: <%= @survey.title %></h2>
 
 
-<div class="demo-container">
-  <div class="demo-box">Demonstration Box</div>
-</div>
+ <table>
+    <!-- list questions from survey -->
+    <% @survey.questions.each do |question| %>
+      <tr>
+        <td><p class="que"><strong><%= question.text %></strong></p></td>
+        <td></td>
+      </tr>
+      <!-- list possible answers for all questions in that survey -->
+      <% @survey.questions.find(question.id).possible_answers.each do |possible_answer| %>
+      <tr>
+        <td><p class="ans"></p><%= possible_answer.text %></td>
+        <td>
+        <!-- tabulate all "votes" for this particular poss. answer -->
+         <%= possible_answer.chosen_answers.count %>
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+</table>
 
-<h2>Stats for: <%= @survey.title %></h2>
-<!-- list possible answers for all questions in that survey -->
 
-<% @question.each do |ques| %>
 
-  <p class="que"><strong><%= ques.text %></strong></p>
 
-  <% @survey.questions.find(ques).possible_answers.each do |posans|%>
-    <p class="ans"><%= posans.text %></p>
-  <% end %>
-
-<% end %>
 <!-- tabulate "votes" for each possible answer -->
 <br>
 <!-- display percentage next to possible answer -->

@@ -85,11 +85,15 @@ get '/stats/:id' do
 	else
 		p params[:id]
 		@survey = Survey.find(params[:id])
-		@question = Survey.find(params[:id]).questions
-		@answer = Survey.find(params[:id]).questions.find(2).possible_answers
-		p @survey
-		p @question
-		# P @answer
+		# @survey.questions
+		#@question = Survey.find(params[:id]).questions
+		# @answer = Survey.find(params[:id]).questions.find(1).possible_answers
+		@chosenanswer = ChosenAnswer.all
+		puts "-------------------------"
+		p @chosenanswer
+	# 	p @survey
+	# 	p @question
+	# 	# P @answer
 		erb :stats
 	end
   

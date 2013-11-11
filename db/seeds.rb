@@ -4,14 +4,14 @@ require 'faker'
 @all_users = []
 @all_surveys = []
 
-10.times do 
+20.times do 
 	email = Faker::Internet.email 
 	@all_users << User.create(email: email, password: "password", password_confirmation: "password")
 end
 
-5.times do 
+2.times do 
 	title = Faker::Name.title 
-	user_id = rand(1..10)
+	user_id = rand(1..20)
 	draft_status = true 
 	@all_surveys << Survey.create(title: title, user_id: user_id, draft_status: draft_status)
 end
@@ -58,12 +58,10 @@ end
 # 	user = User.create(email: Faker::Internet.email)
 # end
 
-
-
 User.all.each do |user|
 	Survey.all.each do |survey|
 		survey.questions.each do |question|
-			ChosenAnswer.create(question: question, user: user, possible_answer: PossibleAnswer.find(rand(question.possible_answers.length) + 1))
+			ChosenAnswer.create(question_id: question.id, user_id: user.id, possible_answer_id: question.possible_answers.sample.id)
 		end
 	end
 end
